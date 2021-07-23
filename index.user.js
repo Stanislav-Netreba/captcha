@@ -7,24 +7,21 @@
 // @include https://lessons.zennolab.com/captchas/hcaptcha/*
 // @exclude https://lessons.zennolab.com/captchas/hcaptcha/verify.php?*
 // @homepage     https://github.com/MollyBlanke
-// @updateURL    https://github.com/MollyBlanket/captcha/raw/main/index.user.js
 // @downloadURL  https://github.com/MollyBlanket/captcha/raw/main/index.user.js
+// @updateURL    https://github.com/MollyBlanket/captcha/raw/main/index.user.js
 // @connect rucaptcha.com
 // @grant GM_xmlhttpRequest
 // ==/UserScript==
 
 const siteDetails = {
-  pageurl: 'https://lessons.zennolab.com/captchas/hcaptcha/?level=easy'
+  pageurl: location.href,
+  sitekey: document.querySelector('.h-captcha').getAttribute('data-sitekey')
 }
 
 const apiKey = '6db9972030b51a3f3e82094878592bb0';
 
 (async () => {
-      console.log('start')
-
-      let sitekey = document.querySelector('.h-captcha').getAttribute('data-sitekey')
-
-      const requestId = await initiateCaptchaRequest(apiKey, sitekey);
+      const requestId = await initiateCaptchaRequest(apiKey);
       console.log(requestId)
 
 
@@ -48,9 +45,9 @@ function GM_get(url){
   });
 }
 
-async function initiateCaptchaRequest(apiKey, sitekey) {
+async function initiateCaptchaRequest(apiKey) {
 
-  let response = await GM_get(`https://rucaptcha.com/in.php?key=${apiKey}&method=hcaptcha&sitekey=${sitekey}&pageurl=${siteDetails.pageurl}$json=1`);
+  let response = await GM_get(`https://rucaptcha.com/in.php?key=${apiKey}&method=hcaptcha&sitekey=${siteDetails.sitekey}&pageurl=${siteDetails.pageurl}$json=1`);
   return response.responseText.split('|')[1];
 }
 
@@ -73,4 +70,3 @@ async function requestCaptchaResults(apiKey, requestId) {
 function sleep(time){
   return new Promise(r => setTimeout(r, time));
 };
-
