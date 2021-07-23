@@ -22,6 +22,8 @@ const apiKey = '6db9972030b51a3f3e82094878592bb0';
 
 (async () => {
         console.log('start')
+        
+        console.log(document.querySelector('.h-captcha').getAttribute('data-sitekey'))
     
         
         const requestId = await initiateCaptchaRequest(apiKey);
