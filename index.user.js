@@ -22,6 +22,8 @@ const apiKey = '6db9972030b51a3f3e82094878592bb0';
 
 (async () => {
         console.log('start')
+    
+        
         const requestId = await initiateCaptchaRequest(apiKey);
         console.log(requestId)
 
@@ -46,7 +48,7 @@ function GM_get(url){
     });
 }
 
-async function initiateCaptchaRequest(apiKey) {
+async function initiateCaptchaRequest(apiKey, sitekey) {
     const formData = {
         method: 'hcaptcha',
         sitekey: siteDetails.sitekey,
@@ -54,7 +56,7 @@ async function initiateCaptchaRequest(apiKey) {
         pageurl: siteDetails.pageurl,
         json: 1
     };
-    let response = await GM_get(`https://rucaptcha.com/in.php?key=${apiKey}&method=hcaptcha&sitekey=${siteDetails.sitekey}&pageurl=${siteDetails.pageurl}$json=1`);
+    let response = await GM_get(`https://rucaptcha.com/in.php?key=${apiKey}&method=hcaptcha&sitekey=${sitekey}&pageurl=${siteDetails.pageurl}$json=1`);
     return response.responseText.split('|')[1];
 }
 
