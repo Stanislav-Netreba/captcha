@@ -47,7 +47,7 @@ function GM_get(url){
 
 async function initiateCaptchaRequest(apiKey) {
 
-  let response = await GM_get(`https://rucaptcha.com/in.php?key=${apiKey}&method=hcaptcha&sitekey=${siteDetails.sitekey}&pageurl=${siteDetails.pageurl}$json=1`);
+  let response = await GM_get(`https://rucaptcha.com/in.php?key=${apiKey}&method=hcaptcha&sitekey=${siteDetails.sitekey}&pageurl=${siteDetails.pageurl}&json=0`);
   return response.responseText.split('|')[1];
 }
 
