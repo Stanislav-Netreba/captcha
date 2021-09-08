@@ -18,7 +18,7 @@ const siteDetails = {
   sitekey: document.querySelector('.h-captcha').getAttribute('data-sitekey')
 }
 
-const apiKey = '6db9972030b51a3f3e82094878592bb0';
+const apiKey = 'токен';
 
 (async () => {
       const requestId = await initiateCaptchaRequest(apiKey);
