@@ -6,9 +6,9 @@
 // @version 1.0
 // @include https://lessons.zennolab.com/captchas/hcaptcha/*
 // @exclude https://lessons.zennolab.com/captchas/hcaptcha/verify.php?*
-// @homepage     https://github.com/MollyBlanke
-// @downloadURL  https://github.com/MollyBlanket/captcha/raw/main/index.user.js
-// @updateURL    https://github.com/MollyBlanket/captcha/raw/main/index.user.js
+// @homepage     https://github.com/Stanislav-Netreba
+// @downloadURL  https://github.com/Stanislav-Netreba/captcha/raw/main/index.user.js
+// @updateURL    https://github.com/Stanislav-Netreba/captcha/raw/main/index.user.js
 // @connect rucaptcha.com
 // @grant GM_xmlhttpRequest
 // ==/UserScript==
@@ -18,7 +18,7 @@ const siteDetails = {
   sitekey: document.querySelector('.h-captcha').getAttribute('data-sitekey')
 }
 
-const apiKey = 'токен';
+const apiKey = 'token';
 
 (async () => {
       const requestId = await initiateCaptchaRequest(apiKey);
